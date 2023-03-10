@@ -8,7 +8,9 @@ This goes into the 'Run external program on torrent completion' section of qbitt
 This next section passes through the parameter from the command line by order.
 
  %F is the content path
+ 
  %L is the catagory for the torrents you want to reupload
+ 
  %N is the name of the torrent to allow for cross seeding
 
 %F=$1
