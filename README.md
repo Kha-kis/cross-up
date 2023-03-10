@@ -12,7 +12,9 @@ This next section passes through the parameter from the command line by order.
  %N is the name of the torrent to allow for cross seeding
 
 %F=$1
+
 %L=$2
+
 %N=$3
 
 Cross-Up:
