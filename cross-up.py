@@ -31,18 +31,12 @@ logger.info('')
 logger.info('Starting L4G Upload Assistant for %s at filepath %s', sys.argv[3], sys.argv[1])
 logger.info('')
 
+baseupload_cmd = ['python3', config['l4g'], sys.argv[1], '-ua', '-tk', config['trackers']]
 if sys.argv[2] == config['cat']:
     try:
         # Run L4G Upload Assistant
-        upload_cmd = [
-            'python3',
-            config['l4g'],
-            sys.argv[1],
-            '-ua',
-            '-tk',
-            config['trackers'],
-            '--anon',
-        ]
+        upload_cmd = upload_cmd = baseupload_cmd + config[upload_args]
+        
         logger.info('Running L4G Upload Assistant: %s', ' '.join(upload_cmd))
         upload_result = subprocess.run(upload_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         logger.info('L4G Upload Assistant output: %s', upload_result.stdout.decode('utf-8').strip())
