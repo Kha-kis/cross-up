@@ -1,4 +1,4 @@
-Cross-Up an auto reupload and cross-seed script for use with qbittorrent created by khak1s
+Cross-Up an auto reupload and cross-seed script for use with qbittorrent
 This tool relies on cross-seed Autobrr/RSS feeds, and L4G Upload-Assistant
 
 
