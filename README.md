@@ -11,7 +11,7 @@ This next section passes through the parameter from the command line by order.
 
 %F is the content path
  
-%L is the catagory for the torrents you want to reupload
+%L is the category for the torrents you want to reupload
  
 %N is the name of the torrent to allow for cross seeding
 
