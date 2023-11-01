@@ -1,5 +1,5 @@
 Cross-Up an auto reupload and cross-seed script for use with qbittorrent
-This tool relies on cross-seed Autobrr/RSS feeds, and L4G Upload-Assistant
+This tool relies on cross-seed, Autobrr/RSS feeds, and L4G Upload-Assistant
 
 
 Cross-seed must be set up in Daemon mode in order for this script to work.
