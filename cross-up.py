@@ -32,30 +32,31 @@ logger.info('Starting L4G Upload Assistant for %s at filepath %s', sys.argv[3], 
 logger.info('')
 
 baseupload_cmd = ['python3', config['l4g'], sys.argv[1], '-ua', '-tk', config['trackers']]
+
+# Check if sys.argv[2] matches config['cat']
 if sys.argv[2] == config['cat']:
     try:
-        # Run L4G Upload Assistant
-        upload_cmd = upload_cmd = baseupload_cmd + config[upload_args]
-        
+        # Run L4G Upload Assistant when sys.argv[2] matches config['cat']
+        upload_cmd = baseupload_cmd + config[upload_args]
         logger.info('Running L4G Upload Assistant: %s', ' '.join(upload_cmd))
         upload_result = subprocess.run(upload_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         logger.info('L4G Upload Assistant output: %s', upload_result.stdout.decode('utf-8').strip())
-
-        # Trigger cross-seed
-        cs_cmd = [
-            'curl',
-            '--no-progress-meter',
-            '-XPOST',
-            config['csurl'],
-            '--data-urlencode',
-            'name=' + sys.argv[3],
-        ]
-        logger.info('Triggering cross-seed: %s', ' '.join(cs_cmd))
-        cs_result = subprocess.run(cs_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        logger.info('Cross-seed output: %s', cs_result.stdout.decode('utf-8').strip())
     except subprocess.CalledProcessError as e:
         logger.error('Error running command: %s', e)
         print('Error running command:', e)
 else:
     logger.error('Unknown error')
     print('Unknown error')
+
+# Trigger cross-seed (outside of the if block)
+cs_cmd = [
+    'curl',
+    '--no-progress-meter',
+    '-XPOST',
+    config['csurl'],
+    '--data-urlencode',
+    'name=' + sys.argv[3],
+]
+logger.info('Triggering cross-seed: %s', ' '.join(cs_cmd))
+cs_result = subprocess.run(cs_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+logger.info('Cross-seed output: %s', cs_result.stdout.decode('utf-8').strip())
