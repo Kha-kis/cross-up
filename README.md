@@ -5,7 +5,7 @@ This tool relies on cross-seed, Autobrr/RSS feeds, and L4G Upload-Assistant
 Cross-seed must be set up in Daemon mode in order for this script to work.
 
 Configure qbittorrent it have the 'Run external program on torrent completion' section include:
-/path/to/crossup.py "%F" "%L" "%N"
+/path/to/crossup.py "%F" "%L" "%I"
 
 This next section passes through the parameter from the command line by order.
 
@@ -13,11 +13,11 @@ This next section passes through the parameter from the command line by order.
  
 %L is the category for the torrents you want to reupload
  
-%N is the name of the torrent to allow for cross seeding
+%I is the infoHash of the torrent to allow for cross seeding
 
 %F=$1
 %L=$2
-%N=$3
+%I=$3
 
 Cross-Up:
 
