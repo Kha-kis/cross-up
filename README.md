@@ -22,7 +22,9 @@ Cross-Up automates the process of reuploading completed torrents and initiating 
 /usr/bin/python3 -u /path/to/cross-up.py "%F" "%L" "%I"`
 ```
   `%F`: Content path
+
   `%L`: Category for the torrents to be reuploaded
+
   `%I`: InfoHash of the torrent for cross-seeding
 
   - For rTorrent, follow these steps:
