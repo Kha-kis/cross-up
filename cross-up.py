@@ -12,6 +12,12 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+# Construct the path to the config file
+config_file_path = os.path.join(script_dir, 'config.cfg')
+
 # Load config from file
 with open('config.cfg') as f:
     config = {}
@@ -37,7 +43,7 @@ baseupload_cmd = ['python3', config['l4g'], sys.argv[1], '-ua', '-tk', config['t
 if sys.argv[2] == config['cat']:
     try:
         # Run L4G Upload Assistant when sys.argv[2] matches config['cat']
-        upload_cmd = baseupload_cmd + config[upload_args]
+        upload_cmd = baseupload_cmd + [config['upload_args']]
         logger.info('Running L4G Upload Assistant: %s', ' '.join(upload_cmd))
         upload_result = subprocess.run(upload_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         logger.info('L4G Upload Assistant output: %s', upload_result.stdout.decode('utf-8').strip())
@@ -55,7 +61,7 @@ cs_cmd = [
     '-XPOST',
     config['csurl'],
     '--data-urlencode',
-    'name=' + sys.argv[3],
+    'infoHash=' + sys.argv[3],
 ]
 logger.info('Triggering cross-seed: %s', ' '.join(cs_cmd))
 cs_result = subprocess.run(cs_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
