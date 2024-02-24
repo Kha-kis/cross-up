@@ -22,7 +22,7 @@ This next section passes through the parameter from the command line by order.
 Cross-Up:
 
 This script will be called when a torrent is downloaded and reaches 100% completion.
-A category have to be defined in order for the script to be envoked.
+A category has to be defined in order for the script to be envoked.
 
 The category is used to verify that the torrent was intended to be sent to Cross-up.
 
