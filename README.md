@@ -16,7 +16,7 @@ Cross-Up automates the process of reuploading completed torrents and initiating 
 ## Prerequisites
 
 - **Cross-seed Daemon**: Cross-seed must be set up in Daemon mode for Cross-Up to function properly.
-- **qBittorrent Configuration**: Configure qBittorrent to execute Cross-Up upon torrent completion. Add the following command to the 'Run external program on torrent completion' section: /path/to/cross-up.py "%F" "%L" "%I"
+- **qBittorrent Configuration**: Configure qBittorrent to execute Cross-Up upon torrent completion. Add the following command to the 'Run external program on torrent completion' section: `/path/to/cross-up.py "%F" "%L" "%I"`
 
 ## Usage
 
