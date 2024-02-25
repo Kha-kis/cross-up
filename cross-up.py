@@ -19,7 +19,7 @@ script_dir = os.path.dirname(os.path.realpath(__file__))
 config_file_path = os.path.join(script_dir, 'config.cfg')
 
 # Load config from file
-with open('config.cfg') as f:
+with open(config_file_path) as f:
     config = {}
     for line in f:
         if not line.strip().startswith('#') and '=' in line:
@@ -28,7 +28,7 @@ with open('config.cfg') as f:
 
 # Set up logger
 logger = logging.getLogger(__name__)
-logger.addHandler(logging.FileHandler('cross-up.log'))
+logger.addHandler(logging.FileHandler(os.path.join(script_dir, 'cross-up.log')))
 logger.setLevel(logging.INFO)
 
 # Print start message
@@ -37,7 +37,7 @@ logger.info('')
 logger.info('Starting L4G Upload Assistant for %s at filepath %s', sys.argv[3], sys.argv[1])
 logger.info('')
 
-baseupload_cmd = ['python3', config['l4g'], sys.argv[1], '-ua', '-tk', config['trackers']]
+baseupload_cmd = ['python3', os.path.join(script_dir, config['l4g']), sys.argv[1], '-ua', '-tk', config['trackers']]
 
 # Inside the conditional block for handling the upload
 if config['torrent_client'] == 'qbittorrent':
